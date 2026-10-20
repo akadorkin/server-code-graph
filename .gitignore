@@ -1,0 +1,7 @@
+# real inventory and all collected output contain infrastructure details
+hosts.txt
+config.env
+out/
+graphify-out/
+__pycache__/
+.smoke.env

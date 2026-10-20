@@ -1,0 +1,8 @@
+# One host per line:  <name>  <ssh-target>  [jump-host]
+# <name> is how the host appears in the graph; <ssh-target> is anything `ssh` accepts
+# (user@host, an alias from ~/.ssh/config, user@203.0.113.10). Non-root targets need passwordless `sudo -n`.
+# The optional third column is passed to `ssh -J` for hosts reachable only through a bastion.
+node-a      admin@node-a.example.com
+ingress-1   root@203.0.113.10
+exit-de-1   admin@exit-de-1.example.org
+home-box    admin@192.0.2.20            bastion.example.com
