@@ -13,7 +13,7 @@ printf '[Unit]\nDescription=Nightly backup\n[Service]\nExecStart=/usr/local/bin/
 printf '[Timer]\nOnCalendar=daily\n' > $R/node-a/etc/systemd/system/backup.timer
 printf 'frontend tls\n  bind :443\n  use_backend be_exit if { req.ssl_sni -i app.example.com }\nbackend be_exit\n  server s1 203.0.113.20:443\nlisten stats\n  stats auth admin:Adm1nPw\n' > $R/node-a/etc/haproxy/haproxy.cfg
 printf 'services:\n  app:\n    image: nginx:1.27\n    environment:\n      - DB_PASSWORD=hunter22\n' > $R/node-a/opt/app/docker-compose.yml
-printf 'BOT_TOKEN=123456789:AAHfakefakefakefakefakefakefakefake12\n' > $R/node-a/opt/app/.env
+printf 'BOT_TOKEN=123456789:''AAHfakefakefakefakefakefakefakefake12\n' > $R/node-a/opt/app/.env
 printf '[Interface]\nPrivateKey = %s\n[Peer]\nEndpoint = exit-de-1.example.org:51820\n' "$(printf 'aB3%.0s' {1..14})c=" > $R/node-a/etc/wireguard/wg0.conf
 printf '{"name":"/app-app-1","image":"nginx:1.27","state":"running","restart":"always","workdir":"/opt/app","ports":{"80/tcp":[{"HostPort":"8080"}]},"net":"bridge","mounts":["/opt/app/data"]}\n' > $R/node-a/_containers.jsonl
 printf 'server { server_name exit.example.org; location / { proxy_pass http://203.0.113.10:8080; } }\n' > $R/exit-de-1/etc/nginx/sites-enabled/site
